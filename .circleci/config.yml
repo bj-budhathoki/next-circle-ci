@@ -20,7 +20,7 @@ jobs:
             - ./node_modules
       - run:
           name: Run tests
-          command: pnpm run test
+          command: pnpm run lint
       - run:
           name: build
           command: pnpm run build
