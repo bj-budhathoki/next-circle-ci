@@ -8,19 +8,19 @@ jobs:
       - checkout
       - run:
           name: Update NPM
-          command: "sudo npm install -g npm@5"
+          command: "sudo npm install -g pnpm"
       - restore_cache:
-          key: dependency-cache-{{ checksum "package-lock.json" }}
+          key: dependency-cache-{{ checksum "pnpm-lock.yaml" }}
       - run:
           name: Install Dependencies
-          command: npm install
+          command: pnpm install
       - save_cache:
-          key: dependency-cache-{{ checksum "package-lock.json" }}
+          key: dependency-cache-{{ checksum "pnpm-lock.yaml" }}
           paths:
             - ./node_modules
       - run:
           name: Run tests
-          command: npm run test
+          command: pnpm run test
       - run:
           name: build
-          command: npm run build
+          command: pnpm run build
